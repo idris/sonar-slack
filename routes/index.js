@@ -16,7 +16,7 @@ router.post('/cloudmailin', function(req, res, next) {
 
   var slack = new Slack(process.env.SLACK_INCOMING_WEBHOOK_URL);
   var sendOptions = {
-    username: (process.env.SLACK_USERNAME || 'Sonar') + ':' + msg.sender,
+    username: (process.env.SLACK_USERNAME || 'Sonar') + ': ' + msg.sender,
     text: msg.body,
     icon_url: 'https://raw.githubusercontent.com/idris/sonar-slack/master/public/images/sonar-logo-square.png'
   };
