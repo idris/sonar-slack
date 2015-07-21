@@ -5,7 +5,7 @@ var sonarEmailParser = require('../lib/sonarEmailParser');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Sonar Slack Integration Ready' });
 });
 
 router.post('/cloudmailin', function(req, res, next) {
