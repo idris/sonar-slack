@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/cloudmailin', function(req, res, next) {
+  console.log(req.body.headers);
   var subject = req.body.headers.Subject;
   var body = req.body.html;
 
