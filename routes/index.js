@@ -18,7 +18,7 @@ router.post('/cloudmailin', function(req, res, next) {
   var channel = process.env.SLACK_CHANNEL || '#general';
   var slackMessage = '*' + msg.sender + '*: ' + msg.body + '\nReply at https://www.sendsonar.com/';
   console.log('sending slackbot message', slackMessage);
-  slackbot.send(channel, slackMessage, function(err, res, body) {
+  slackbot.send(channel, slackMessage, function(err, slackres, body) {
     if (err) {
       console.error('slackbot send failed', err);
       res.status(500).end();
