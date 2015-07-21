@@ -18,7 +18,8 @@ router.post('/cloudmailin', function(req, res, next) {
   var sendOptions = {
     username: (process.env.SLACK_USERNAME || 'Sonar') + ': ' + msg.sender,
     text: msg.body,
-    icon_url: 'https://raw.githubusercontent.com/idris/sonar-slack/master/public/images/sonar-logo-square.png'
+    icon_url: 'https://raw.githubusercontent.com/idris/sonar-slack/master/public/images/sonar-logo-square.png',
+    unfurl_links: false
   };
   if (process.env.SLACK_CHANNEL) {
     sendOptions.channel = process.env.SLACK_CHANNEL;
