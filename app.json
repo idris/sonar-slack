@@ -1,0 +1,18 @@
+{
+  "name": "sonar-slack",
+  "description": "Connect Sonar to Slack",
+  "repository": "https://github.com/idris/sonar-slack",
+  "keywords": ["sonar", "slack", "node", "express"],
+  "env": {
+    "SLACK_TEAM": {
+      "description": "Your Slack team's subdomain (without the `.slack.com`)"
+    },
+    "SLACK_CHANNEL": {
+      "description": "Slack channel to post in",
+      "value": "#general"
+    },
+    "SLACKBOT_TOKEN": {
+      "description": "Slackbot integration token"
+    }
+  }
+}

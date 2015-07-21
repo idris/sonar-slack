@@ -3,18 +3,18 @@ This app posts new [Sonar](http://www.sendsonar.com/) messages to Slack,
 because nobody likes email.
 
 ## Setup
-1. Create a [Cloudmailin](http://www.cloudmailin.com/) account
+1. [Add Slackbot integration](https://minder.slack.com/services/new/slackbot) to your Slack.
+2. Create a [Cloudmailin](http://www.cloudmailin.com/) account
    and configure it to send JSON to a postbin somewhere.
-2. Add a user to your Sonar account using your Cloudmailin email address.
-3. Verify the email address and create the new Sonar user
+3. Add a user to your Sonar account using your Cloudmailin email address.
+4. Verify the email address and create the new Sonar user
    by following the link that was sent to your postbin.
-4. Create a [Heroku](http://www.heroku.com/) app.
-5. Edit your Cloudmailin settings and change the URL to `http://<YOUR_HEROKU_URL>/cloudmailin`.
-6. [Add Slackbot integration](https://minder.slack.com/services/new/slackbot) to your Slack.
-7. Configure and deploy this app.
+5. Deploy this app to [Heroku](http://www.heroku.com/): [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/idris/sonar-slack)
+6. Edit your Cloudmailin settings and change the URL to `http://<YOUR_HEROKU_URL>/cloudmailin`.
 
 ## Configuration
-Several environment variables are required to run the app:
+Several environment variables (listed below) are required to run the app.
+If you use the "Deploy to Heroku" button above, you will be prompted for them.
 
 | Environment Variable | Value | Default |
 |----------------------|-------|---------|
