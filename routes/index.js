@@ -19,13 +19,13 @@ router.post('/cloudmailin', function(req, res, next) {
   var slackMessage = '*' + sender + '*: ' + body + '\nReply at https://www.sendsonar.com/';
   slackbot.send(channel, slackMessage, function(err, res, body) {
     if (err) {
-      console.log(err, res, body);
+      console.log('slackbot send failed', err, res, body);
       res.status(500).end();
       return;
     }
-  });
 
-  res.send(msg);
+    res.send(msg);
+  });
 });
 
 module.exports = router;
