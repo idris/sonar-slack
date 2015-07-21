@@ -14,6 +14,7 @@ router.post('/cloudmailin', function(req, res, next) {
   var msg = sonarEmailParser.parse(subject, body);
 
   console.log(msg.subject, msg.body);
+  res.send(msg.subject + ': ' + msg.body);
 });
 
 module.exports = router;
