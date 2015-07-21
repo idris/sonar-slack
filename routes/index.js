@@ -16,10 +16,11 @@ router.post('/cloudmailin', function(req, res, next) {
 
   var slackbot = new Slackbot(process.env.SLACK_TEAM, process.env.SLACKBOT_TOKEN);
   var channel = process.env.SLACK_CHANNEL || '#general';
-  var slackMessage = '*' + sender + '*: ' + body + '\nReply at https://www.sendsonar.com/';
+  var slackMessage = '*' + msg.sender + '*: ' + msg.body + '\nReply at https://www.sendsonar.com/';
+  console.log('sending slackbot message', slackMessage);
   slackbot.send(channel, slackMessage, function(err, res, body) {
     if (err) {
-      console.log('slackbot send failed', err, res, body);
+      console.error('slackbot send failed', err);
       res.status(500).end();
       return;
     }
