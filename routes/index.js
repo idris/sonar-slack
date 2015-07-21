@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Slackbot = require('slackbot');
+var Slack = require('node-slack');
 var sonarEmailParser = require('../lib/sonarEmailParser');
 
 /* GET home page. */
@@ -14,19 +14,19 @@ router.post('/cloudmailin', function(req, res, next) {
 
   var msg = sonarEmailParser.parse(subject, body);
 
-  var slackbot = new Slackbot(process.env.SLACK_TEAM, process.env.SLACKBOT_TOKEN);
-  var channel = process.env.SLACK_CHANNEL || '#general';
-  var slackMessage = '*' + msg.sender + '*: ' + msg.body + '\nReply at https://www.sendsonar.com/';
-  console.log('sending slackbot message', slackMessage);
-  slackbot.send(channel, slackMessage, function(err, slackres, body) {
-    if (err) {
-      console.error('slackbot send failed', err);
-      res.status(500).end();
-      return;
-    }
+  var slack = new Slack(process.env.SLACK_INCOMING_WEBHOOK_URL);
+  var sendOptions = {
+    username: (process.env.SLACK_USERNAME || 'Sonar') + ':' + msg.sender,
+    text: msg.body,
+    icon_url: 'https://raw.githubusercontent.com/idris/sonar-slack/master/public/images/sonar-logo-square.png'
+  };
+  if (process.env.SLACK_CHANNEL) {
+    sendOptions.channel = process.env.SLACK_CHANNEL;
+  }
 
-    res.send(msg);
-  });
+  slack.send(sendOptions);
+
+  res.send(msg);
 });
 
 module.exports = router;

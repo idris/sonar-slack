@@ -3,7 +3,7 @@ This app posts new [Sonar](http://www.sendsonar.com/) messages to Slack,
 because nobody likes email.
 
 ## Setup
-1. [Add Slackbot integration](https://minder.slack.com/services/new/slackbot) to your Slack.
+1. [Add Incoming WebHooks](https://minder.slack.com/services/new/incoming-webhook) to your Slack.
 2. Create a [Cloudmailin](http://www.cloudmailin.com/) account
    and configure it to send JSON to a postbin somewhere.
 3. Add a user to your Sonar account using your Cloudmailin email address.
@@ -18,6 +18,6 @@ If you use the "Deploy to Heroku" button above, you will be prompted for them.
 
 | Environment Variable | Value | Default |
 |----------------------|-------|---------|
-| SLACK_TEAM | Your Slack team's subdomain (without the `.slack.com`) | |
-| SLACK_CHANNEL | Slack channel to post to | #general |
-| SLACKBOT_TOKEN | Slackbot integration token | |
+| SLACK_INCOMING_WEBHOOK_URL | Slack Incoming WebHook URL | |
+| SLACK_CHANNEL | Slack channel to post in. If not specified, it'll use the channel you specified when setting up incoming the webhooks integration in slack. |  |
+| SLACK_USERNAME | Username that the messages will come from. | Sonar |
