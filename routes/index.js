@@ -13,7 +13,7 @@ router.post('/cloudmailin', function(req, res, next) {
   var body = req.body.html;
 
   var msg = sonarEmailParser.parse(subject, body);
-  var slackMessage = msg.body + '\n<' + msg.link + '|' + Reply via Sonar + '>';
+  var slackMessage = msg.body + '\n<' + msg.link + '|Reply via Sonar>';
 
   var slack = new Slack(process.env.SLACK_INCOMING_WEBHOOK_URL);
   var sendOptions = {
